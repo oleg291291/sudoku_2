@@ -1,4 +1,4 @@
-module.exports = function solveSudoku(matrix) {
+module.exports = function solveSudoku(matrix)  {
   // your solution
   var candArr = [
     [0, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -53,65 +53,57 @@ module.exports = function solveSudoku(matrix) {
         }
       }
     }
-    console.log(matrix);
-    console.log(candArr);
+    
   }
+  
   function hiddenFinderHor() {
-    effective = 0;
-    for (var row = 0; row < 9; row++) {
+     for (var row = 0; row < 9; row++) {
       for (var col = 0; col < 9; col++) {
-        var candCell = candArr[row][col];
-        if (candCell != 'solv') {
-          for (var z = 0; z < candCell.length; z++) {
-            var horStr = "";
-            for (var i = 0; i < 9; i++) {
-              if (i != col) {
-                horStr += candArr[row][i];
-              }
-            }
-            if (horStr.indexOf(candCell[z]) == -1) {
-              matrix[row][col] = +candCell[z];
-              candArr[row][col] = 'solv';
-              effective = 1;
+        
+          var candArrOne = candArr[row][col];
+        if(candArrOne != 'solv'){
+        for(var x = 0; x < candArrOne.length; x++){
+          
+//             var candArrRowStr = candArr[row].join('');
+          var candArrRowStr = ""
+          for(var w = 0; w< 9; w++){
+            if(w != col){
+              candArrRowStr += candArr[row][w];
             }
           }
+          
+          console.log(candArrRowStr)
+          console.log(candArrOne[x])
+          console.log(candArrRowStr.indexOf(candArrOne[x]))
+          
+            if(candArrRowStr.indexOf(candArrOne[x]) < 0){
+               console.log(row + " yo " + col);
+              matrix[row][col] = +candArrOne[x];
+              candArr[row][col] =  "solv";
+              x = 999;
+            }
+           
+          }
+           
         }
+       
       }
-    }
-  }
-  function hiddenFinderVert() {
-    effective = 0;
-    for (var col = 0; col < 9; col++) {
-      for (var row = 0; row < 9; row++) {
-        var candCellVert = candArr[row][col];
-        if (candCellVert != 'solv') {
-          var vertStr = "";
-          for (var i = 0; i < 9; i++) {
-            if (i != row) {
-              vertStr += candArr[i][col];
-            }
-          }
-          for (var z = 0; z < candCellVert.length; z++) {
-            if (vertStr.indexOf(candCellVert[z]) == -1) {
-              matrix[row][col] = +candCellVert[z];
-              candArr[row][col] = 'solv';
-              effective = 1;
-            }
-          }
-        }
-      }
-    }
+     }
   }
 
-  do {
+for (var step = 0; step< 5; step++){
+   singleFinder();
     singleFinder();
-    singleFinder();
-    hiddenFinderHor();
-    singleFinder();
-    singleFinder();
-    hiddenFinderVert();
+  hiddenFinderHor();
+   // singleFinder();
+  //  singleFinder();
+    //hiddenFinderVert();
+ console.log(matrix);
+    console.log(candArr);
+}
+   
 
-  } while (effective == 1);
+  
 
 
   console.log(candArr);
@@ -120,4 +112,5 @@ module.exports = function solveSudoku(matrix) {
 
 
 }
+
 
