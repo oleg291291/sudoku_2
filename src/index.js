@@ -252,12 +252,12 @@ function randCand(){
     singleFinder();
 }
        var testCheck = test();
-       console.log(testCheck);
+      // console.log(testCheck);
        if(testCheck == 405) { 
          return matrix;
        }
        else {
-         console.log('false');
+        // console.log('false');
          //matrix = Object.assign([], clone);
        }
        //теперь вызвать все остальные функции
@@ -439,8 +439,8 @@ for (var step = 0; step< 3; step++){
   
 
 
-  console.log(candArr);
-  console.log(matrix);
+  //console.log(candArr);
+ // console.log(matrix);
   return matrix;
 
 
