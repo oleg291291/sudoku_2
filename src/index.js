@@ -1,4 +1,4 @@
-module.exports = function solveSudoku(matrix) {
+module.exports = function solveSudoku(matrix)  {
   // your solution
   var candArr = [
     [0, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -13,6 +13,17 @@ module.exports = function solveSudoku(matrix) {
   ];
   var effective = 0;
 
+  function test(){
+    var testSum = 0;
+     for (var row = 0; row < 9; row++) {
+      for (var col = 0; col < 9; col++) {
+        testSum += matrix[row][col];
+      }
+     }
+    return testSum;
+   // console.log(testSum)
+  }
+  
   function singleFinder() {
     effective = 0;
     for (var row = 0; row < 9; row++) {
@@ -172,8 +183,179 @@ module.exports = function solveSudoku(matrix) {
      }
   }
   }
+
+function randCand(){
+   for (var row = 0; row < 9; row++) {
+     var counter = 0;
+      for (var col = 0; col < 9; col++) {
+      if(matrix[row][col] == 0){
+        counter++;
+      } 
+      }
+     // var c = Object.assign([], matrix);
+     
+    // var bckpMatrixRow = matrix[row].slice(0);
+     if (counter == 2){
+        
+       
+       var counter2 = 0;
+       for (var col2 = 0; col2 < 9; col2++) {
+      if(matrix[row][col2] == 0){
+        if(counter2 == 0){
+          matrix[row][col2] = +candArr[row][col2][1];
+          candArr[row][col2] = 'solv'
+        }
+        else{
+          matrix[row][col2] = +candArr[row][col2][0];
+          candArr[row][col2] = 'solv'
+        }
+        counter2++;   
+      } 
+      }  
+       for (var step = 0; step< 3; step++){
   
-for (var step = 0; step< 10; step++){
+  
+
+  singleFinder();
+    singleFinder();
+  singleFinder();
+    singleFinder();
+  singleFinder();
+    singleFinder();
+  singleFinder();
+    singleFinder();
+  
+ hiddenFinderHor();
+ 
+  singleFinder();
+    singleFinder();
+  singleFinder();
+    singleFinder();
+  singleFinder();
+    singleFinder();
+  
+  hiddenFinderVert();
+    singleFinder();
+    singleFinder();
+  singleFinder();
+    singleFinder();
+  singleFinder();
+    singleFinder();
+  
+ hiddenFinderSq();
+  
+  singleFinder();
+    singleFinder();
+  singleFinder();
+    singleFinder();
+  singleFinder();
+    singleFinder();
+}
+       var testCheck = test();
+       console.log(testCheck);
+       if(testCheck == 405) { 
+         return matrix;
+       }
+       else {
+         console.log('false');
+         //matrix = Object.assign([], clone);
+       }
+       //теперь вызвать все остальные функции
+       // вызвать функцию проверки верности. если она не проходит, то поменять местами
+       
+       
+       
+     }
+      }
+  
+}
+  
+  function randCandVert(){
+   for (var col = 0; col < 9; col++) {
+     var counter = 0;
+      for (var row = 0; row < 9; row++) {
+      if(matrix[row][col] == 0){
+        counter++;
+      } 
+      }
+     // var c = Object.assign([], matrix);
+     
+    // var bckpMatrixRow = matrix[row].slice(0);
+     if (counter == 2){
+        
+       
+       var counter2 = 0;
+       for (var row2 = 0; row2 < 9; row2++) {
+      if(matrix[row2][col] == 0){
+        if(counter2 == 0){
+          matrix[row2][col] = +candArr[row2][col][1];
+          candArr[row2][col] = 'solv'
+        }
+        else{
+          matrix[row2][col] = +candArr[row2][col][0];
+          candArr[row2][col] = 'solv'
+        }
+        counter2++;   
+      } 
+      }  
+       for (var step = 0; step< 3; step++){
+  
+  
+
+  singleFinder();
+    singleFinder();
+  singleFinder();
+    singleFinder();
+  singleFinder();
+    singleFinder();
+  singleFinder();
+    singleFinder();
+  
+ hiddenFinderHor();
+ 
+  singleFinder();
+    singleFinder();
+  singleFinder();
+    singleFinder();
+  singleFinder();
+    singleFinder();
+  
+  hiddenFinderVert();
+    singleFinder();
+    singleFinder();
+  singleFinder();
+    singleFinder();
+  singleFinder();
+    singleFinder();
+  
+ hiddenFinderSq();
+  
+  singleFinder();
+    singleFinder();
+  singleFinder();
+    singleFinder();
+  singleFinder();
+    singleFinder();
+}
+       var testCheck = test();
+       console.log(testCheck);
+       if(testCheck == 405) { 
+         return matrix;
+       }
+       else {
+         console.log('false');
+         //matrix = Object.assign([], clone);
+       }
+       //теперь вызвать все остальные функции
+       // вызвать функцию проверки верности. если она не проходит, то поменять местами
+       
+       
+       
+     }
+      }
+  
+}
+
    singleFinder();
     singleFinder();
   singleFinder();
@@ -201,20 +383,66 @@ for (var step = 0; step< 10; step++){
     singleFinder();
   
  hiddenFinderSq();
- //console.log(matrix);
- //   console.log(candArr);
+  
+  singleFinder();
+    singleFinder();
+  singleFinder();
+    singleFinder();
+  singleFinder();
+    singleFinder();
+  
+ randCand();
+  randCandVert();
+ 
+for (var step = 0; step< 3; step++){
+  
+  
+
+  singleFinder();
+    singleFinder();
+  singleFinder();
+    singleFinder();
+  singleFinder();
+    singleFinder();
+  singleFinder();
+    singleFinder();
+  
+ hiddenFinderHor();
+ 
+  singleFinder();
+    singleFinder();
+  singleFinder();
+    singleFinder();
+  singleFinder();
+    singleFinder();
+  
+  hiddenFinderVert();
+    singleFinder();
+    singleFinder();
+  singleFinder();
+    singleFinder();
+  singleFinder();
+    singleFinder();
+  
+ hiddenFinderSq();
+  
+  singleFinder();
+    singleFinder();
+  singleFinder();
+    singleFinder();
+  singleFinder();
+    singleFinder();
 }
-   
+ 
+
 
   
 
 
-//  console.log(candArr);
-//  console.log(matrix);
+  console.log(candArr);
+  console.log(matrix);
   return matrix;
 
 
 }
-
-
 
