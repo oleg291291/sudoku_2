@@ -111,8 +111,8 @@ module.exports = function solveSudoku(matrix) {
     singleFinder();
     hiddenFinderVert();
 
-  } while (effective = 1);
-  
+  } while (effective == 1);
+
 
   console.log(candArr);
   console.log(matrix);
