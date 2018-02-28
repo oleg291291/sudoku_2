@@ -1,4 +1,4 @@
-module.exports = function solveSudoku(matrix)  {
+module.exports = function solveSudoku(matrix) {
   // your solution
   var candArr = [
     [0, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -77,7 +77,7 @@ module.exports = function solveSudoku(matrix)  {
          // console.log(candArrRowStr.indexOf(candArrOne[x]))
           
             if(candArrRowStr.indexOf(candArrOne[x]) < 0){
-           //    console.log(row + " yo " + col);
+             //  console.log(row + " yo " + col);
               matrix[row][col] = +candArrOne[x];
               candArr[row][col] =  "solv";
               x = 999;
@@ -106,12 +106,12 @@ module.exports = function solveSudoku(matrix)  {
             }
           }
           
-         // console.log(candArrRowStr)
+        //  console.log(candArrRowStr)
          // console.log(candArrOne[x])
          // console.log(candArrRowStr.indexOf(candArrOne[x]))
           
             if(candArrRowStr.indexOf(candArrOne[x]) < 0){
-            //   console.log(row + " yo " + col);
+             //  console.log(row + " yo " + col);
               matrix[row][col] = +candArrOne[x];
               candArr[row][col] =  "solv";
               x = 999;
@@ -125,7 +125,55 @@ module.exports = function solveSudoku(matrix)  {
      }
   }
 
-for (var step = 0; step< 5; step++){
+  function hiddenFinderSq(){
+    {
+     for (var row = 0; row < 9; row++) {
+      for (var col = 0; col < 9; col++) {
+        
+          var candArrOne = candArr[row][col];
+        if(candArrOne != 'solv'){
+        for(var x = 0; x < candArrOne.length; x++){
+          
+//             var candArrRowStr = candArr[row].join('');
+          var candArrRowStr = ""
+          
+           var sectRow = Math.floor(row / 3) * 3;
+          var sectCol = Math.floor(col / 3) * 3;
+          for (var j = 0; j < 3; j++) {
+            for (var h = 0; h < 3; h++) {
+              if((sectRow + j != row) && (sectCol + h != col))
+              candArrRowStr += candArr[sectRow + j][sectCol + h];
+            }
+          }
+          
+          
+          for(var w = 0; w< 9; w++){
+            if(w != row){
+              candArrRowStr += candArr[w][col];
+            }
+          }
+          
+         // console.log(candArrRowStr)
+         // console.log(candArrOne[x])
+         // console.log(candArrRowStr.indexOf(candArrOne[x]))
+          
+            if(candArrRowStr.indexOf(candArrOne[x]) < 0){
+               //console.log(row + " yo " + col);
+              matrix[row][col] = +candArrOne[x];
+              candArr[row][col] =  "solv";
+              x = 999;
+            }
+           
+          }
+           
+        }
+       
+      }
+     }
+  }
+  }
+  
+for (var step = 0; step< 10; step++){
    singleFinder();
     singleFinder();
   singleFinder();
@@ -135,9 +183,8 @@ for (var step = 0; step< 5; step++){
   singleFinder();
     singleFinder();
   
-  hiddenFinderHor();
-   // singleFinder();
-  //  singleFinder();
+ hiddenFinderHor();
+ 
   singleFinder();
     singleFinder();
   singleFinder();
@@ -145,9 +192,17 @@ for (var step = 0; step< 5; step++){
   singleFinder();
     singleFinder();
   
-    hiddenFinderVert();
+  hiddenFinderVert();
+    singleFinder();
+    singleFinder();
+  singleFinder();
+    singleFinder();
+  singleFinder();
+    singleFinder();
+  
+ hiddenFinderSq();
  //console.log(matrix);
-   // console.log(candArr);
+ //   console.log(candArr);
 }
    
 
@@ -155,7 +210,7 @@ for (var step = 0; step< 5; step++){
 
 
 //  console.log(candArr);
- // console.log(matrix);
+//  console.log(matrix);
   return matrix;
 
 
