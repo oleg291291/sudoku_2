@@ -72,12 +72,46 @@ module.exports = function solveSudoku(matrix)  {
             }
           }
           
-          console.log(candArrRowStr)
-          console.log(candArrOne[x])
-          console.log(candArrRowStr.indexOf(candArrOne[x]))
+         // console.log(candArrRowStr)
+         // console.log(candArrOne[x])
+         // console.log(candArrRowStr.indexOf(candArrOne[x]))
           
             if(candArrRowStr.indexOf(candArrOne[x]) < 0){
-               console.log(row + " yo " + col);
+           //    console.log(row + " yo " + col);
+              matrix[row][col] = +candArrOne[x];
+              candArr[row][col] =  "solv";
+              x = 999;
+            }
+           
+          }
+           
+        }
+       
+      }
+     }
+  }
+   function hiddenFinderVert() {
+     for (var row = 0; row < 9; row++) {
+      for (var col = 0; col < 9; col++) {
+        
+          var candArrOne = candArr[row][col];
+        if(candArrOne != 'solv'){
+        for(var x = 0; x < candArrOne.length; x++){
+          
+//             var candArrRowStr = candArr[row].join('');
+          var candArrRowStr = ""
+          for(var w = 0; w< 9; w++){
+            if(w != row){
+              candArrRowStr += candArr[w][col];
+            }
+          }
+          
+         // console.log(candArrRowStr)
+         // console.log(candArrOne[x])
+         // console.log(candArrRowStr.indexOf(candArrOne[x]))
+          
+            if(candArrRowStr.indexOf(candArrOne[x]) < 0){
+            //   console.log(row + " yo " + col);
               matrix[row][col] = +candArrOne[x];
               candArr[row][col] =  "solv";
               x = 999;
@@ -94,23 +128,38 @@ module.exports = function solveSudoku(matrix)  {
 for (var step = 0; step< 5; step++){
    singleFinder();
     singleFinder();
+  singleFinder();
+    singleFinder();
+  singleFinder();
+    singleFinder();
+  singleFinder();
+    singleFinder();
+  
   hiddenFinderHor();
    // singleFinder();
   //  singleFinder();
-    //hiddenFinderVert();
- console.log(matrix);
-    console.log(candArr);
+  singleFinder();
+    singleFinder();
+  singleFinder();
+    singleFinder();
+  singleFinder();
+    singleFinder();
+  
+    hiddenFinderVert();
+ //console.log(matrix);
+   // console.log(candArr);
 }
    
 
   
 
 
-  console.log(candArr);
-  console.log(matrix);
+//  console.log(candArr);
+ // console.log(matrix);
   return matrix;
 
 
 }
+
 
 
