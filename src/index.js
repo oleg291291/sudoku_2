@@ -394,7 +394,7 @@ function randCand(){
  randCand();
   randCandVert();
  
-for (var step = 0; step< 3; step++){
+for (var step = 0; step< 100; step++){
   
   
 
