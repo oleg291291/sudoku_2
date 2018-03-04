@@ -32,7 +32,6 @@ module.exports = function solveSudoku(matrix)  {
        return true;
      }
    
-   // console.log(testSum)
   }
   
   function singleFinder() {
