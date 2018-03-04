@@ -312,7 +312,103 @@ var bckpMatrix = JSON.parse(JSON.stringify(matrix));
     }
 
   }
+  
+  function randomSolver(){
+    var bckpMatrix = JSON.parse(JSON.stringify(matrix));
+      var bckpCand = JSON.parse(JSON.stringify(candArr));
+    
+    for (var row = 0; row < 9; row++) {
+      var counter = 0;
+      var candArrRand = [];
+      for (var col = 0; col < 9; col++) {
+        if (matrix[row][col] == 0) {
+          counter++;
+          for(var s=0; s<candArr[row][col].length; s++){
+            if(candArrRand.indexOf(candArr[row][col][s]) == -1){
+               candArrRand.push(candArr[row][col][s]);
+               }
+          }
+        }
+      }
+      //тут подставляем
+      
+      
+      //console.log(candArrRand)
+      // var c = Object.assign([], matrix);
 
+      // var bckpMatrixRow = matrix[row].slice(0);
+      if (counter == 4) {
+        
+        for(var v = 0; v < 900; v++){
+          var num = 1111;
+          var numStr = num+"";
+          var isIt = 1;
+          for(var vX = 0; vX< 4; vX++){
+            if(candArrRand.indexOf(numStr[vX]) == -1){
+              isIt = 0;
+            }
+          }
+          if(isIt == 1){
+         for (var colx = 0; colx < 9; colx++) {
+        if (matrix[row][colx] == 0) {
+           matrix[row][colx] = +numStr[v];
+          num++;
+        }
+      } 
+      
+        }
+          singleFinder();
+  hiddenFinderHor();
+  singleFinder();
+  hiddenFinderVert();
+  singleFinder();
+  hiddenFinderSq();
+
+  singleFinder();
+  singleFinder();
+  singleFinder();
+
+  randCand(0,1);
+  randCandVert(0,1);
+  
+  singleFinder();
+  singleFinder();
+
+  hiddenFinderHor();
+
+  singleFinder();
+  singleFinder();
+
+  hiddenFinderVert();
+  singleFinder();
+  singleFinder();
+  singleFinder();
+
+  hiddenFinderSq();
+
+  singleFinder();
+  singleFinder();
+  singleFinder();
+  
+  randCand(0,1);
+  randCandVert(0,1);
+          
+     if (test()) {
+          return matrix;
+        }
+        else {
+          //console.log('failed');
+          matrix = JSON.parse(JSON.stringify(bckpMatrix));
+          candArr = JSON.parse(JSON.stringify(bckpCand));
+
+        }     
+          
+          
+        }
+        
+  }
+}
+  }
   singleFinder();
   hiddenFinderHor();
   singleFinder();
@@ -348,10 +444,10 @@ var bckpMatrix = JSON.parse(JSON.stringify(matrix));
   
   randCand(0,1);
   randCandVert(0,1);
-
- // console.log(candArr);
- //  console.log(matrix);
-  return matrix;
+randomSolver()
+ //console.log(candArr);
+ // console.log(matrix);
+return matrix;
 
 
 }
