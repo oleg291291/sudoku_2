@@ -15,12 +15,23 @@ module.exports = function solveSudoku(matrix)  {
 
   function test(){
     var testSum = 0;
+    var testHor = 0;
      for (var row = 0; row < 9; row++) {
       for (var col = 0; col < 9; col++) {
         testSum += matrix[row][col];
+        testHor += matrix[row][col];
+      }
+      if(testHor != 45){
+        return false;
       }
      }
-    return testSum;
+     if(testSum !=405){
+       return false;
+     }
+     else{
+       return true;
+     }
+   
    // console.log(testSum)
   }
   
@@ -339,7 +350,7 @@ function randCand(){
 }
        var testCheck = test();
        console.log(testCheck);
-       if(testCheck == 405) { 
+       if(testCheck()) { 
          return matrix;
        }
        else {
