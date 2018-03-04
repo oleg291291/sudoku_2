@@ -205,6 +205,8 @@ module.exports = function solveSudoku(matrix) {
           hiddenFinderSq();
           singleFinder();
           singleFinder();
+        randCand(0,1);
+  randCandVert(0,1);
         if (test()) {
           return matrix;
         }
@@ -281,6 +283,8 @@ var bckpMatrix = JSON.parse(JSON.stringify(matrix));
           singleFinder();
           singleFinder();
           singleFinder();
+          randCand(0,1);
+  randCandVert(0,1);
         }
        
         console.log(test());
@@ -342,13 +346,14 @@ var bckpMatrix = JSON.parse(JSON.stringify(matrix));
   singleFinder();
   singleFinder();
   
-  randCand(1,0);
-  randCandVert(1,0);
+  randCand(0,1);
+  randCandVert(0,1);
 
-  console.log(candArr);
-   console.log(matrix);
+ // console.log(candArr);
+ //  console.log(matrix);
   return matrix;
 
 
 }
+
 
