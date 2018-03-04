@@ -63,18 +63,21 @@ module.exports = function solveSudoku(matrix)  {
             }
           }
           if (cellCand.length == 1) {
+            effective = 1;
             matrix[row][col] = +cellCand[0]
             candArr[row][col] = 'solv';
 
           }
           if (cellCand.length > 1) {
             candArr[row][col] = cellCand;
-            effective = 1;
+            
           }
         }
       }
     }
-    
+   if(effective === 1){
+    singleFinder()
+   } 
   }
   
   function hiddenFinderHor() {
