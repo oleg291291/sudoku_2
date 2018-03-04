@@ -331,10 +331,6 @@ var bckpMatrix = JSON.parse(JSON.stringify(matrix));
         }
       }
       //тут подставляем
-      
-      
-      //console.log(candArrRand)
-      // var c = Object.assign([], matrix);
 
       // var bckpMatrixRow = matrix[row].slice(0);
       if (counter == 4) {
