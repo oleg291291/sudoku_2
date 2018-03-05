@@ -287,7 +287,7 @@ var bckpMatrix = JSON.parse(JSON.stringify(matrix));
   randCandVert(0,1);
         }
        
-        console.log(test());
+        
         if (test()) {
           return matrix;
         }
@@ -335,20 +335,52 @@ var bckpMatrix = JSON.parse(JSON.stringify(matrix));
       // var bckpMatrixRow = matrix[row].slice(0);
       if (counter == 4) {
         
-        for(var v = 0; v < 900; v++){
+        for(var v = 0; v < 12; v++){
+
+var candArrRandArr = [
+[candArrRand[0] + "" + candArrRand[1] + "" + candArrRand[2] + "" + candArrRand[3]],
+[candArrRand[0] + "" + candArrRand[1] + "" + candArrRand[3] + "" + candArrRand[2]],
+[candArrRand[0] + "" + candArrRand[2] + "" + candArrRand[1] + "" + candArrRand[3]],
+[candArrRand[0] + "" + candArrRand[2] + "" + candArrRand[3] + "" + candArrRand[1]],
+[candArrRand[0] + "" + candArrRand[3] + "" + candArrRand[1] + "" + candArrRand[2]],
+[candArrRand[0] + "" + candArrRand[3] + "" + candArrRand[2] + "" + candArrRand[1]],
+[candArrRand[1] + "" + candArrRand[0] + "" + candArrRand[2] + "" + candArrRand[3]],
+[candArrRand[1] + "" + candArrRand[0] + "" + candArrRand[3] + "" + candArrRand[2]],
+[candArrRand[1] + "" + candArrRand[2] + "" + candArrRand[0] + "" + candArrRand[3]],
+[candArrRand[1] + "" + candArrRand[2] + "" + candArrRand[3] + "" + candArrRand[0]],
+[candArrRand[1] + "" + candArrRand[3] + "" + candArrRand[0] + "" + candArrRand[2]],
+[candArrRand[1] + "" + candArrRand[3] + "" + candArrRand[2] + "" + candArrRand[0]],
+[candArrRand[2] + "" + candArrRand[0] + "" + candArrRand[1] + "" + candArrRand[3]],
+[candArrRand[2] + "" + candArrRand[0] + "" + candArrRand[3] + "" + candArrRand[1]],
+[candArrRand[2] + "" + candArrRand[1] + "" + candArrRand[0] + "" + candArrRand[3]],
+[candArrRand[2] + "" + candArrRand[1] + "" + candArrRand[3] + "" + candArrRand[0]],
+[candArrRand[2] + "" + candArrRand[3] + "" + candArrRand[0] + "" + candArrRand[1]],
+[candArrRand[2] + "" + candArrRand[3] + "" + candArrRand[1] + "" + candArrRand[0]],
+[candArrRand[3] + "" + candArrRand[0] + "" + candArrRand[1] + "" + candArrRand[2]],
+[candArrRand[3] + "" + candArrRand[0] + "" + candArrRand[2] + "" + candArrRand[1]],
+[candArrRand[3] + "" + candArrRand[1] + "" + candArrRand[0] + "" + candArrRand[2]],
+[candArrRand[3] + "" + candArrRand[1] + "" + candArrRand[2] + "" + candArrRand[0]],
+[candArrRand[3] + "" + candArrRand[2] + "" + candArrRand[0] + "" + candArrRand[1]],
+[candArrRand[3] + "" + candArrRand[2] + "" + candArrRand[1] + "" + candArrRand[0]],
+];
+
           var num = 1111;
-          var numStr = num+"";
-          var isIt = 1;
-          for(var vX = 0; vX< 4; vX++){
-            if(candArrRand.indexOf(numStr[vX]) == -1){
-              isIt = 0;
-            }
-          }
-          if(isIt == 1){
+          var numStr = candArrRandArr[v] + "";
+          console.log(numStr);
+          // var isIt = 1;
+          // for(var vX = 0; vX< 4; vX++){
+          //   if(candArrRand.indexOf(numStr[vX]) == -1){
+          //     isIt = 0;
+          //   }
+          // }
+
+          // if(isIt == 1){
+          var charNum = 0;
+
          for (var colx = 0; colx < 9; colx++) {
         if (matrix[row][colx] == 0) {
-           matrix[row][colx] = +numStr[v];
-          num++;
+           matrix[row][colx] = +numStr[charNum];
+          charNum++;
         }
       } 
       
@@ -403,7 +435,7 @@ var bckpMatrix = JSON.parse(JSON.stringify(matrix));
         }
         
   }
-}
+// }
   }
   singleFinder();
   hiddenFinderHor();
