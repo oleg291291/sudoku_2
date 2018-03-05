@@ -16,6 +16,22 @@ module.exports = function solveSudoku(matrix) {
   function test() {
     var testSum = 0;
     var testHor = 0;
+    var testVert = 0;
+
+    for (var col = 0; col < 9; col++) {
+      for (var row = 0; row < 9; row++) {
+        if(matrix[row][col] == 0){
+          return false;
+        }
+        testVert += matrix[row][col];
+        
+      }
+      if (testVert != 45) {
+        return false;
+      }
+      else{testVert = 0;}
+    }
+
     for (var row = 0; row < 9; row++) {
       for (var col = 0; col < 9; col++) {
         testSum += matrix[row][col];
@@ -335,7 +351,7 @@ var bckpMatrix = JSON.parse(JSON.stringify(matrix));
       // var bckpMatrixRow = matrix[row].slice(0);
       if (counter == 4) {
         
-        for(var v = 0; v < 12; v++){
+        for(var v = 0; v < 24; v++){
 
 var candArrRandArr = [
 [candArrRand[0] + "" + candArrRand[1] + "" + candArrRand[2] + "" + candArrRand[3]],
@@ -364,7 +380,7 @@ var candArrRandArr = [
 [candArrRand[3] + "" + candArrRand[2] + "" + candArrRand[1] + "" + candArrRand[0]],
 ];
 
-          var num = 1111;
+         // var num = 1111;
           var numStr = candArrRandArr[v] + "";
           console.log(numStr);
           // var isIt = 1;
@@ -420,23 +436,154 @@ var candArrRandArr = [
   
   randCand(0,1);
   randCandVert(0,1);
+
+  
           
      if (test()) {
           return matrix;
         }
         else {
-          //console.log('failed');
+          console.log('failed');
+          
           matrix = JSON.parse(JSON.stringify(bckpMatrix));
           candArr = JSON.parse(JSON.stringify(bckpCand));
-
+          
         }     
           
           
         }
         
   }
-// }
+}
+
+function randomSolverVert(){
+    var bckpMatrix = JSON.parse(JSON.stringify(matrix));
+      var bckpCand = JSON.parse(JSON.stringify(candArr));
+    console.log('vert!')
+    for (var col = 0; col < 9; col++) {
+      var counter = 0;
+      var candArrRand = [];
+      for (var row = 0; row < 9; row++) {
+        if (matrix[row][col] == 0) {
+          counter++;
+          for(var s=0; s<candArr[row][col].length; s++){
+            if(candArrRand.indexOf(candArr[row][col][s]) == -1){
+               candArrRand.push(candArr[row][col][s]);
+               }
+          }
+        }
+      }
+      //тут подставляем
+
+      // var bckpMatrixRow = matrix[row].slice(0);
+      if (counter == 4) {
+        
+        for(var v = 0; v < 24; v++){
+
+var candArrRandArr = [
+[candArrRand[0] + "" + candArrRand[1] + "" + candArrRand[2] + "" + candArrRand[3]],
+[candArrRand[0] + "" + candArrRand[1] + "" + candArrRand[3] + "" + candArrRand[2]],
+[candArrRand[0] + "" + candArrRand[2] + "" + candArrRand[1] + "" + candArrRand[3]],
+[candArrRand[0] + "" + candArrRand[2] + "" + candArrRand[3] + "" + candArrRand[1]],
+[candArrRand[0] + "" + candArrRand[3] + "" + candArrRand[1] + "" + candArrRand[2]],
+[candArrRand[0] + "" + candArrRand[3] + "" + candArrRand[2] + "" + candArrRand[1]],
+[candArrRand[1] + "" + candArrRand[0] + "" + candArrRand[2] + "" + candArrRand[3]],
+[candArrRand[1] + "" + candArrRand[0] + "" + candArrRand[3] + "" + candArrRand[2]],
+[candArrRand[1] + "" + candArrRand[2] + "" + candArrRand[0] + "" + candArrRand[3]],
+[candArrRand[1] + "" + candArrRand[2] + "" + candArrRand[3] + "" + candArrRand[0]],
+[candArrRand[1] + "" + candArrRand[3] + "" + candArrRand[0] + "" + candArrRand[2]],
+[candArrRand[1] + "" + candArrRand[3] + "" + candArrRand[2] + "" + candArrRand[0]],
+[candArrRand[2] + "" + candArrRand[0] + "" + candArrRand[1] + "" + candArrRand[3]],
+[candArrRand[2] + "" + candArrRand[0] + "" + candArrRand[3] + "" + candArrRand[1]],
+[candArrRand[2] + "" + candArrRand[1] + "" + candArrRand[0] + "" + candArrRand[3]],
+[candArrRand[2] + "" + candArrRand[1] + "" + candArrRand[3] + "" + candArrRand[0]],
+[candArrRand[2] + "" + candArrRand[3] + "" + candArrRand[0] + "" + candArrRand[1]],
+[candArrRand[2] + "" + candArrRand[3] + "" + candArrRand[1] + "" + candArrRand[0]],
+[candArrRand[3] + "" + candArrRand[0] + "" + candArrRand[1] + "" + candArrRand[2]],
+[candArrRand[3] + "" + candArrRand[0] + "" + candArrRand[2] + "" + candArrRand[1]],
+[candArrRand[3] + "" + candArrRand[1] + "" + candArrRand[0] + "" + candArrRand[2]],
+[candArrRand[3] + "" + candArrRand[1] + "" + candArrRand[2] + "" + candArrRand[0]],
+[candArrRand[3] + "" + candArrRand[2] + "" + candArrRand[0] + "" + candArrRand[1]],
+[candArrRand[3] + "" + candArrRand[2] + "" + candArrRand[1] + "" + candArrRand[0]],
+];
+
+          //var num = 1111;
+          var numStr = candArrRandArr[v] + "";
+          console.log(numStr);
+          // var isIt = 1;
+          // for(var vX = 0; vX< 4; vX++){
+          //   if(candArrRand.indexOf(numStr[vX]) == -1){
+          //     isIt = 0;
+          //   }
+          // }
+
+          // if(isIt == 1){
+          var charNum = 0;
+
+         for (var rowx = 0; rowx < 9; rowx++) {
+        if (matrix[rowx][col] == 0) {
+           matrix[rowx][col] = +numStr[charNum];
+          charNum++;
+        }
+      } 
+      
+        }
+          singleFinder();
+  hiddenFinderHor();
+  singleFinder();
+  hiddenFinderVert();
+  singleFinder();
+  hiddenFinderSq();
+
+  singleFinder();
+  singleFinder();
+  singleFinder();
+
+  randCand(0,1);
+  randCandVert(0,1);
+  
+  singleFinder();
+  singleFinder();
+
+  hiddenFinderHor();
+
+  singleFinder();
+  singleFinder();
+
+  hiddenFinderVert();
+  singleFinder();
+  singleFinder();
+  singleFinder();
+
+  hiddenFinderSq();
+
+  singleFinder();
+  singleFinder();
+  singleFinder();
+  
+  randCand(0,1);
+  randCandVert(0,1);
+
+  randomSolver();
+  
+          
+     if (test()) {
+          return matrix;
+        }
+        else {
+          console.log('failed');
+          
+          matrix = JSON.parse(JSON.stringify(bckpMatrix));
+          candArr = JSON.parse(JSON.stringify(bckpCand));
+          
+        }     
+          
+          
+        }
+        
   }
+}
+
   singleFinder();
   hiddenFinderHor();
   singleFinder();
@@ -473,6 +620,7 @@ var candArrRandArr = [
   randCand(0,1);
   randCandVert(0,1);
 randomSolver()
+randomSolverVert()
  //console.log(candArr);
  // console.log(matrix);
 return matrix;
