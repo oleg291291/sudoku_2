@@ -111,7 +111,6 @@ module.exports = function solveSudoku(matrix) {
               }
             }
             if (candArrRowStr.indexOf(candArrOne[x]) < 0) {
-              //  console.log(row + " yo " + col);
               matrix[row][col] = +candArrOne[x];
               candArr[row][col] = "solv";
               x = 999;
@@ -227,11 +226,10 @@ module.exports = function solveSudoku(matrix) {
           return matrix;
         }
         else {
-          //console.log('failed');
           matrix = JSON.parse(JSON.stringify(bckpMatrix));
           candArr = JSON.parse(JSON.stringify(bckpCand));
           if(x == 1 && y == 0){
-            return false//console.log('failed 2nd time hor')
+            return false
           }
           else{
             randCand(1,0);
@@ -253,9 +251,6 @@ module.exports = function solveSudoku(matrix) {
           counter++;
         }
       }
-      // var c = Object.assign([], matrix);
-
-      // var bckpMatrixRow = matrix[row].slice(0);
       if (counter == 2) {
 
 var bckpMatrix = JSON.parse(JSON.stringify(matrix));
@@ -308,20 +303,16 @@ var bckpMatrix = JSON.parse(JSON.stringify(matrix));
           return matrix;
         }
         else {
-          //console.log('failed');
           matrix = JSON.parse(JSON.stringify(bckpMatrix));
           candArr = JSON.parse(JSON.stringify(bckpCand));
           if(x == 1 && y == 0){
-            return false//console.log('failed 2nd time vert')
+            return false
           }
           else{
             randCandVert(1,0);
           }
           
         }
-        //теперь вызвать все остальные функции
-        // вызвать функцию проверки верности. если она не проходит, то поменять местами
-
 
 
       }
@@ -331,7 +322,6 @@ var bckpMatrix = JSON.parse(JSON.stringify(matrix));
   function randomSolverVertPRE(){
     var bckpMatrix = JSON.parse(JSON.stringify(matrix));
       var bckpCand = JSON.parse(JSON.stringify(candArr));
-    console.log('vert!')
     for (var col = 0; col < 9; col++) {
       var counter = 0;
       var candArrRand = [];
@@ -346,8 +336,6 @@ var bckpMatrix = JSON.parse(JSON.stringify(matrix));
         }
       }
       //тут подставляем
-
-      // var bckpMatrixRow = matrix[row].slice(0);
       if (counter == 4) {
         
         for(var v = 0; v < 24; v++){
@@ -379,17 +367,8 @@ var candArrRandArr = [
 [candArrRand[3] + "" + candArrRand[2] + "" + candArrRand[1] + "" + candArrRand[0]],
 ];
 
-          //var num = 1111;
           var numStr = candArrRandArr[v] + "";
-          console.log(numStr);
-          // var isIt = 1;
-          // for(var vX = 0; vX< 4; vX++){
-          //   if(candArrRand.indexOf(numStr[vX]) == -1){
-          //     isIt = 0;
-          //   }
-          // }
 
-          // if(isIt == 1){
           var charNum = 0;
 
          for (var rowx = 0; rowx < 9; rowx++) {
@@ -444,7 +423,6 @@ var candArrRandArr = [
           return matrix;
         }
         else {
-          console.log('failed');
           
           matrix = JSON.parse(JSON.stringify(bckpMatrix));
           candArr = JSON.parse(JSON.stringify(bckpCand));
@@ -474,8 +452,6 @@ var candArrRandArr = [
         }
       }
       //тут подставляем
-
-      // var bckpMatrixRow = matrix[row].slice(0);
       if (counter == 4) {
         
         for(var v = 0; v < 24; v++){
@@ -507,17 +483,7 @@ var candArrRandArr = [
 [candArrRand[3] + "" + candArrRand[2] + "" + candArrRand[1] + "" + candArrRand[0]],
 ];
 
-         // var num = 1111;
           var numStr = candArrRandArr[v] + "";
-          console.log(numStr);
-          // var isIt = 1;
-          // for(var vX = 0; vX< 4; vX++){
-          //   if(candArrRand.indexOf(numStr[vX]) == -1){
-          //     isIt = 0;
-          //   }
-          // }
-
-          // if(isIt == 1){
           var charNum = 0;
 
          for (var colx = 0; colx < 9; colx++) {
@@ -571,7 +537,6 @@ var candArrRandArr = [
           return matrix;
         }
         else {
-          console.log('failed');
           
           matrix = JSON.parse(JSON.stringify(bckpMatrix));
           candArr = JSON.parse(JSON.stringify(bckpCand));
@@ -594,17 +559,7 @@ var candArrRandArr = [
 [candArrRand[2] + "" + candArrRand[1] + "" + candArrRand[0]],
 ];
 
-         // var num = 1111;
           var numStr = candArrRandArr[v] + "";
-          console.log(numStr);
-          // var isIt = 1;
-          // for(var vX = 0; vX< 4; vX++){
-          //   if(candArrRand.indexOf(numStr[vX]) == -1){
-          //     isIt = 0;
-          //   }
-          // }
-
-          // if(isIt == 1){
           var charNum = 0;
 
          for (var colx = 0; colx < 9; colx++) {
@@ -658,8 +613,7 @@ var candArrRandArr = [
           return matrix;
         }
         else {
-          console.log('failed');
-          
+
           matrix = JSON.parse(JSON.stringify(bckpMatrix));
           candArr = JSON.parse(JSON.stringify(bckpCand));
           
@@ -674,7 +628,6 @@ var candArrRandArr = [
 function randomSolverVert(){
     var bckpMatrix = JSON.parse(JSON.stringify(matrix));
       var bckpCand = JSON.parse(JSON.stringify(candArr));
-    console.log('vert!')
     for (var col = 0; col < 9; col++) {
       var counter = 0;
       var candArrRand = [];
@@ -688,9 +641,6 @@ function randomSolverVert(){
           }
         }
       }
-      //тут подставляем
-
-      // var bckpMatrixRow = matrix[row].slice(0);
       if (counter == 3) {
         
         for(var v = 0; v < 6; v++){
@@ -704,17 +654,7 @@ var candArrRandArr = [
 [candArrRand[2] + "" + candArrRand[1] + "" + candArrRand[0]],
 ];
 
-         // var num = 1111;
           var numStr = candArrRandArr[v] + "";
-          console.log(numStr);
-          // var isIt = 1;
-          // for(var vX = 0; vX< 4; vX++){
-          //   if(candArrRand.indexOf(numStr[vX]) == -1){
-          //     isIt = 0;
-          //   }
-          // }
-
-          // if(isIt == 1){
           var charNum = 0;
 
          for (var rowx = 0; rowx < 9; rowx++) {
@@ -768,8 +708,6 @@ var candArrRandArr = [
           return matrix;
         }
         else {
-          console.log('failed');
-          
           matrix = JSON.parse(JSON.stringify(bckpMatrix));
           candArr = JSON.parse(JSON.stringify(bckpCand));
           
@@ -808,17 +746,9 @@ var candArrRandArr = [
 [candArrRand[3] + "" + candArrRand[2] + "" + candArrRand[1] + "" + candArrRand[0]],
 ];
 
-          //var num = 1111;
-          var numStr = candArrRandArr[v] + "";
-          console.log(numStr);
-          // var isIt = 1;
-          // for(var vX = 0; vX< 4; vX++){
-          //   if(candArrRand.indexOf(numStr[vX]) == -1){
-          //     isIt = 0;
-          //   }
-          // }
 
-          // if(isIt == 1){
+          var numStr = candArrRandArr[v] + "";
+
           var charNum = 0;
 
          for (var rowx = 0; rowx < 9; rowx++) {
@@ -873,8 +803,6 @@ var candArrRandArr = [
           return matrix;
         }
         else {
-          console.log('failed');
-          
           matrix = JSON.parse(JSON.stringify(bckpMatrix));
           candArr = JSON.parse(JSON.stringify(bckpCand));
           
@@ -923,8 +851,7 @@ var candArrRandArr = [
   randCandVert(0,1);
 randomSolver()
 randomSolverVert()
- //console.log(candArr);
-console.log(matrix);
+//console.log(matrix);
 return matrix;
 
 
