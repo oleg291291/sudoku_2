@@ -527,7 +527,7 @@ var candArrRandArr = [
         }
       } 
       
-        }
+        
           singleFinder();
   hiddenFinderHor();
   singleFinder();
@@ -563,10 +563,10 @@ var candArrRandArr = [
   
   randCand(0,1);
   randCandVert(0,1);
-
+        
   randomSolverVertPRE();
   randomSolver();
-          
+        } ;      
      if (test()) {
           return matrix;
         }
@@ -614,7 +614,7 @@ var candArrRandArr = [
         }
       } 
       
-        }
+       
           singleFinder();
   hiddenFinderHor();
   singleFinder();
@@ -653,7 +653,7 @@ var candArrRandArr = [
 
   randomSolverVertPRE();
   randomSolver();
-          
+     }      
      if (test()) {
           return matrix;
         }
@@ -724,7 +724,7 @@ var candArrRandArr = [
         }
       } 
       
-        }
+        
           singleFinder();
   hiddenFinderHor();
   singleFinder();
@@ -763,7 +763,7 @@ var candArrRandArr = [
 
   randomSolverVertPRE();
   randomSolver();
-          
+      }    
      if (test()) {
           return matrix;
         }
@@ -828,7 +828,7 @@ var candArrRandArr = [
         }
       } 
       
-        }
+        
           singleFinder();
   hiddenFinderHor();
   singleFinder();
@@ -880,7 +880,7 @@ var candArrRandArr = [
           
         }     
           
-          
+        }  
         }
         
   }
@@ -924,10 +924,9 @@ var candArrRandArr = [
 randomSolver()
 randomSolverVert()
  //console.log(candArr);
- // console.log(matrix);
+console.log(matrix);
 return matrix;
 
 
 }
-
 
